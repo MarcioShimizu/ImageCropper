@@ -1,9 +1,15 @@
+from ast import Str
 import cv2
 from pdf2image import convert_from_path
+import argparse
 
 
-pdfname = 'atenza wagon' 
-images = convert_from_path(f'./pdf/{pdfname}.pdf',150)
+parser = argparse.ArgumentParser(description='python3 imagecropper.py pdfname.pdf')
+parser.add_argument('name', type=Str, help='nome do arquivo em PDF SEM A EXTENSAO DO ARQUIVO')
+args = parser.parse_args()
+
+pdfname = args.name
+images = convert_from_path(f'./pdf/{pdfname}',150)
 
 for i in range(len(images)):
 	images[i].save(f'./png/{pdfname}.png', 'PNG')
