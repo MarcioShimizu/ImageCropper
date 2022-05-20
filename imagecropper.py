@@ -5,11 +5,11 @@ import argparse
 
 
 parser = argparse.ArgumentParser(description='python3 imagecropper.py pdfname.pdf')
-parser.add_argument('name', type=Str, help='nome do arquivo em PDF SEM A EXTENSAO DO ARQUIVO')
+parser.add_argument('name')
 args = parser.parse_args()
-
+print(args.name)
 pdfname = args.name
-images = convert_from_path(f'./pdf/{pdfname}',150)
+images = convert_from_path(f'./pdf/{pdfname}.pdf',150)
 
 for i in range(len(images)):
 	images[i].save(f'./png/{pdfname}.png', 'PNG')
